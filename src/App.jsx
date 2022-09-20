@@ -1,5 +1,5 @@
 import React from 'react';
-import { useState } from 'react';
+
 import {
   BrowserRouter,
   Routes,
@@ -18,7 +18,7 @@ const App = () => {
         <Route path="/" element={<SharedLayout />}>
           <Route index element={<Home />} />
           <Route
-            path=":countryId"
+            path="country/:countryId"
             element={<SingleCountry />}
           />
           <Route path="*" element={<ErrorPage />} />

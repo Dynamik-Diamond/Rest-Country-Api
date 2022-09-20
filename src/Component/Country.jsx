@@ -5,15 +5,37 @@ const Country = (country, index) => {
   const { flags, population, name, region, capital } =
     country;
   return (
-    <Link to={`/${country.index}`}>
+    <Link
+      to={`country/${country.name.common}`}
+      className="bg-white dark:bg-DarkBlue w-[250px] font-Nunito shadow"
+    >
+      {/* Country image */}
       <article>
-        <img src={flags.png} alt="flag" />
+        <img
+          src={flags.png}
+          alt="flag"
+          className="w-[250px] h-[150px] object-cover"
+        />
       </article>
-      <article>
-        <h3>{name.common}</h3>
-        <h4>Population: {population}</h4>
-        <h4>Region: {region}</h4>
-        <h4>Capital: {capital}</h4>
+      {/* country info */}
+      <article className="p-4">
+        {/* country title */}
+        <h4 className="font-bold pb-3">{name.common}</h4>
+        {/* country sub-info */}
+        <div className="text-[11px] text-VeryDarkBlue dark:text-gray-300">
+          <p>
+            <span className="font-bold">Population:</span>{' '}
+            {population}
+          </p>
+          <p>
+            <span className="font-bold">Region:</span>{' '}
+            {region}
+          </p>
+          <p>
+            <span className="font-bold">Capital:</span>{' '}
+            {capital}
+          </p>
+        </div>
       </article>
     </Link>
   );
