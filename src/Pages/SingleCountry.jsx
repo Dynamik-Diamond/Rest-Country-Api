@@ -1,6 +1,6 @@
-import { useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { useGlobalContext } from '../Context';
+import { BackBtn } from '../Component/Button';
 
 const SingleCountry = () => {
   const { countryId } = useParams();
@@ -33,7 +33,7 @@ const SingleCountry = () => {
 
     return (
       <div className="container space-y-16 pt-8">
-        <Link to="/">Back</Link>
+        <BackBtn />
         {/* Flag and country details */}
         <article className="sm:flex place-items-center gap-[10rem] space-y-12 md:space-y-0">
           <div className="shadow">
