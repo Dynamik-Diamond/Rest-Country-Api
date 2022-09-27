@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom';
-import SingleCountry from '../Pages/SingleCountry';
 
-const Country = (country, index) => {
+const Country = country => {
   const { flags, population, name, region, capital } =
     country;
   return (

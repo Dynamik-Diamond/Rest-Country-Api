@@ -1,28 +1,32 @@
-import { useGlobalContext } from '../Context';
 import { HiOutlineSearch } from 'react-icons/hi';
 
-const Search = () => {
-  const { query, setQuery, fetchCountry } =
-    useGlobalContext();
+const Search = ({ setQuery, countries }) => {
+  const handleSubmit = e => e.preventDefault();
 
-  const handleSubmit = e => {
-    e.preventDefault();
+  const handleSearchChange = e => {
+    if (!e.target.value) return setQuery(countries);
 
-    fetchCountry();
+    const filterCountry = countries.filter(item =>
+      item.name.common
+        .toLowerCase()
+        .includes(e.target.value),
+    );
+
+    setQuery(filterCountry);
   };
-
   return (
     <form
       onSubmit={handleSubmit}
       className="flex items-center"
     >
-      <HiOutlineSearch onClick={handleSubmit} />
+      <button>
+        <HiOutlineSearch onClick={handleSearchChange} />
+      </button>
       <input
         type="text"
         id="text"
-        placeholder="Search for a country"
-        value={query}
-        onChange={e => setQuery(e.target.value)}
+        placeholder="Search for a country..."
+        onChange={handleSearchChange}
       />
     </form>
   );

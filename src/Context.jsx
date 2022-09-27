@@ -6,39 +6,29 @@ import React, {
 
 const mainUrl = 'https://restcountries.com/v3.1/all';
 
-const searchUrl = 'https://restcountries.com/v3.1/name/';
-
 const AppContext = React.createContext();
 
 export const AppProvider = ({ children }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [countries, getCountries] = useState([]);
-  const [query, setQuery] = useState('');
+  const [query, setQuery] = useState([]);
 
-  const fetchCountry = async () => {
+  const fetchCountry = async url => {
     setIsLoading(true);
-    let url;
-
-    const urlQuery = `${query}`;
-
-    if (query) {
-      url = `${searchUrl}${urlQuery}`;
-    } else {
-      url = `${mainUrl}`;
-    }
-
     const response = await fetch(url);
     const data = await response.json();
+
     const sorted = data.sort(
       (a, b) => b.population - a.population,
     );
     getCountries(sorted);
+    setQuery(sorted);
 
     setIsLoading(false);
   };
 
   useEffect(() => {
-    fetchCountry();
+    fetchCountry(`${mainUrl}`);
   }, []);
 
   return (
@@ -46,10 +36,10 @@ export const AppProvider = ({ children }) => {
       value={{
         isLoading,
         countries,
+        getCountries,
         setIsLoading,
         query,
         setQuery,
-        fetchCountry,
       }}
     >
       {children}
