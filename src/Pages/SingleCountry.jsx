@@ -33,7 +33,7 @@ const SingleCountry = () => {
 
     return (
       <div className="container space-y-16 pt-8">
-        <Link to="/">back</Link>
+        <Link to="/">Back</Link>
         {/* Flag and country details */}
         <article className="sm:flex place-items-center gap-[10rem] space-y-12 md:space-y-0">
           <div className="shadow">
