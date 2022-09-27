@@ -17,7 +17,7 @@ const Search = ({ setQuery, countries }) => {
   return (
     <form
       onSubmit={handleSubmit}
-      className="flex items-center"
+      className="flex items-center gap-6 bg-white dark:bg-DarkBlue py-3  pl-4 mb-10 md:mb-0 rounded-md shadow-lg "
     >
       <button>
         <HiOutlineSearch onClick={handleSearchChange} />
@@ -27,6 +27,7 @@ const Search = ({ setQuery, countries }) => {
         id="text"
         placeholder="Search for a country..."
         onChange={handleSearchChange}
+        className=" bg-white dark:bg-DarkBlue border-none outline-none"
       />
     </form>
   );

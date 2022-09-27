@@ -4,8 +4,8 @@ import CategoryFilter from './CategoryFIlter';
 const Filters = () => {
   const { query, setQuery, countries } = useGlobalContext();
   return (
-    <section className="container py-[3rem]">
-      <div className="flex flex-wrap justify-between items-center">
+    <header className="container py-[3rem]">
+      <div className="flex flex-col md:flex-row md:justify-between ">
         {/* search form */}
         <Search
           query={query}
@@ -19,7 +19,7 @@ const Filters = () => {
           countries={countries}
         />
       </div>
-    </section>
+    </header>
   );
 };
 

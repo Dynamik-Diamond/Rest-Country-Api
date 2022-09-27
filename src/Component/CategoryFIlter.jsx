@@ -16,8 +16,11 @@ const CategoryFilter = ({ setQuery, countries }) => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <select onChange={handleCategory}>
-        <option value="All">Filter By Region</option>
+      <select
+        onChange={handleCategory}
+        className="bg-white dark:bg-DarkBlue py-2 px-2 rounded-md shadow-lg outline-none, border-none"
+      >
+        <option value="All">Filter by Region</option>
         <option value="Africa">Africa</option>
         <option value="Americas">America</option>
         <option value="Asia">Asia</option>
