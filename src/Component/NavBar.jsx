@@ -11,7 +11,7 @@ const NavBar = ({ darkTheme, setDarkTheme }) => {
         {/* Dark mode toggle */}
         <button
           onClick={() => setDarkTheme(!darkTheme)}
-          className="flex text-[13px] "
+          className="flex items-center gap-1 text-[13px] "
         >
           <BsMoon /> Dark Mode
         </button>

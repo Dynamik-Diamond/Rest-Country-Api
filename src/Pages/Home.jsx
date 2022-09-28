@@ -8,6 +8,8 @@ const Home = () => {
 
   if (isLoading) {
     return <Loading />;
+  } else {
+    <CountryList />;
   }
 
   return (

@@ -10,7 +10,7 @@ const BorderCountry = ({ name }) => {
   return (
     <button
       onClick={handleClick}
-      className="inline-block py-[0.25rem] px-[1.3rem] rounded-sm shadow-lg bg-white dark:bg-DarkBlue mt-2"
+      className="py-[0.25rem] px-[1.3rem] rounded-sm shadow-lg bg-white dark:bg-DarkBlue mr-1"
     >
       {name}
     </button>

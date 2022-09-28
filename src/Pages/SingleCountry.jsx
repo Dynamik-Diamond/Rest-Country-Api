@@ -26,9 +26,6 @@ const SingleCountry = () => {
       currencies,
     } = country;
 
-    // const border
-
-    // console.log(borders);
     const nativeName = Object.values(
       country.name.nativeName,
     )[0].common;
@@ -49,8 +46,10 @@ const SingleCountry = () => {
           </div>
           {/* country info */}
           <div className="">
-            <h4 className="font-bold pb-3">{common}</h4>
-            <article className=" grid md:gap-32 grid-cols-1 lg:grid-cols-2 mb-6 md:mb-0 text-VeryDarkBlue dark:text-gray-300">
+            <h4 className="text-[1.6rem] font-bold mb-4">
+              {common}
+            </h4>
+            <article className=" grid md:gap-32 grid-cols-1 lg:grid-cols-2 mb-6 md:mb-0 text-[0.8rem] text-VeryDarkBlue dark:text-gray-300">
               {/* Country info list 1 */}
               <div className="mb-6 md:mb-0 space-y-3">
                 <p>
@@ -113,24 +112,29 @@ const SingleCountry = () => {
               {/* country info list 2 */}
             </article>
             {/* border countries */}
-            <div className="mt-12">
-              <span className="font-bold">
-                Border countries:
-              </span>{' '}
-              {borders.map((border, index) => {
-                const borderResult = countries.find(
-                  bod => bod.cca3 === border,
-                );
-                return (
-                  <div className="">
-                    <BorderCountry
-                      name={borderResult.name.common}
-                      key={borderResult.name.common}
-                    />
-                  </div>
-                );
-              })}
-            </div>
+            {borders ? (
+              <div className="flex  gap-2 text-[0.8rem] mt-10 max-w-[500px]">
+                <span className="font-bold ">
+                  Border countries:
+                </span>{' '}
+                <article className="flex flex-wrap ">
+                  {borders.map((border, index) => {
+                    const borderResult = countries.find(
+                      bod => bod.cca3 === border,
+                    );
+                    return (
+                      <div className="mb-2">
+                        <BorderCountry
+                          name={borderResult.name.common}
+                          key={borderResult.name.common}
+                        />
+                      </div>
+                    );
+                  })}
+                </article>
+              </div>
+            ) : null}
+
             {/* end of border countries */}
           </div>
           {/* country info */}
