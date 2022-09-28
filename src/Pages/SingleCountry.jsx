@@ -1,6 +1,8 @@
 import { useParams } from 'react-router-dom';
 import { useGlobalContext } from '../Context';
 import { BackBtn } from '../Component/Button';
+import BorderCountry from '../Component/BorderCountry';
+import Loading from '../Component/Loading';
 
 const SingleCountry = () => {
   const { countryId } = useParams();
@@ -11,7 +13,7 @@ const SingleCountry = () => {
   );
 
   if (countries.length === 0) {
-    return <h1>Loading</h1>;
+    return <Loading />;
   } else {
     const {
       name: { common },
@@ -20,11 +22,13 @@ const SingleCountry = () => {
       capital,
       population,
       borders,
-      languages,
       tld,
       currencies,
     } = country;
 
+    // const border
+
+    // console.log(borders);
     const nativeName = Object.values(
       country.name.nativeName,
     )[0].common;
@@ -32,10 +36,10 @@ const SingleCountry = () => {
     const flag = Object.values(country.flags)[0];
 
     return (
-      <div className="container space-y-16 pt-8">
+      <div className="container space-y-16 py-8">
         <BackBtn />
         {/* Flag and country details */}
-        <article className="sm:flex place-items-center gap-[10rem] space-y-12 md:space-y-0">
+        <article className="md:flex place-items-center gap-[10rem] space-y-12 md:space-y-0">
           <div className="shadow">
             <img
               src={flag}
@@ -46,7 +50,7 @@ const SingleCountry = () => {
           {/* country info */}
           <div className="">
             <h4 className="font-bold pb-3">{common}</h4>
-            <article className=" grid md:gap-32 grid-cols-1 md:grid-cols-2 mb-6 md:mb-0 text-VeryDarkBlue dark:text-gray-300">
+            <article className=" grid md:gap-32 grid-cols-1 lg:grid-cols-2 mb-6 md:mb-0 text-VeryDarkBlue dark:text-gray-300">
               {/* Country info list 1 */}
               <div className="mb-6 md:mb-0 space-y-3">
                 <p>
@@ -98,7 +102,7 @@ const SingleCountry = () => {
                     Language:
                   </span>{' '}
                   {Object.values(country.languages).map(
-                    (lan, index) => (
+                    lan => (
                       <li className="inline-block mr-2">
                         {lan}
                       </li>
@@ -109,13 +113,23 @@ const SingleCountry = () => {
               {/* country info list 2 */}
             </article>
             {/* border countries */}
-            <div>
+            <div className="mt-12">
               <span className="font-bold">
                 Border countries:
               </span>{' '}
-              {/* {borders.map((border, index) => {
-              return border;
-            })} */}
+              {borders.map((border, index) => {
+                const borderResult = countries.find(
+                  bod => bod.cca3 === border,
+                );
+                return (
+                  <div className="">
+                    <BorderCountry
+                      name={borderResult.name.common}
+                      key={borderResult.name.common}
+                    />
+                  </div>
+                );
+              })}
             </div>
             {/* end of border countries */}
           </div>

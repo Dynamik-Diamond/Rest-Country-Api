@@ -6,11 +6,7 @@ const CountryList = () => {
 
   const result = query.map((country, index) => {
     return (
-      <Country
-        key={country.name.common}
-        {...country}
-        index={index}
-      />
+      <Country key={country.name.common} {...country} />
     );
   });
 
