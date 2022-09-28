@@ -1,11 +1,19 @@
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const Country = country => {
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate(`/country/${country.name.common}`, {
+      replace: false,
+    });
+  };
+
   const { flags, population, name, region, capital } =
     country;
   return (
-    <Link
-      to={`country/${country.name.common}`}
+    <div
+      onClick={handleClick}
       className="bg-white dark:bg-DarkBlue w-[250px] font-Nunito shadow"
     >
       {/* Country image */}
@@ -36,7 +44,7 @@ const Country = country => {
           </p>
         </div>
       </article>
-    </Link>
+    </div>
   );
 };
 
