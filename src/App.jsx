@@ -4,7 +4,6 @@ import {
   BrowserRouter,
   Routes,
   Route,
-  Navigate,
 } from 'react-router-dom';
 
 import Home from './Pages/Home';
@@ -22,7 +21,7 @@ const App = () => {
             path="country/:countryId"
             element={<SingleCountry />}
           />
-          <Route path="*" element={<Navigate to="/" />} />
+          <Route path="*" element={<ErrorPage />} />
         </Route>
       </Routes>
     </BrowserRouter>
