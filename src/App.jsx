@@ -21,7 +21,7 @@ const App = () => {
             path="country/:countryId"
             element={<SingleCountry />}
           />
-          <Route path="*" element={<ErrorPage />} />
+          <Route path="*" element={<Navigate to="/" />} />
         </Route>
       </Routes>
     </BrowserRouter>
